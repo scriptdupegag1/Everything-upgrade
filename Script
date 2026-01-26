@@ -85,3 +85,86 @@ local function AutoClickLevel()
     if remote then
         remote:FireServer() 
     else
+        warn("RemoteEvent 'click_xp' not found in ReplicatedStorage > remotes!")
+    end
+end
+
+
+-- Menu
+local Menu = Window:CreateTab("Main", "home")
+local Section = Menu:CreateSection("Upgrade")
+local Toggle = Menu:CreateToggle({
+   Name = "Auto Buy Upgrades",
+   CurrentValue = false,
+   Callback = function(Value)
+   	_G.AutoUpgrade = Value
+   	AutoUpgrade()
+   end,
+})
+
+local Dropdown = Menu:CreateDropdown({
+   Name = "Select the Auto Buy Speed",
+   Options = {"Slow", "Fast (Not Recommended)"},
+   CurrentOption = {"Slow"},
+   MultipleOptions = false,
+   Callback = function(Options)
+   		BuySpeed = Options[1]
+   end,
+})
+
+local Section = Menu:CreateSection("Research Center")
+local Toggle = Menu:CreateToggle({
+   Name = "Auto Convert",
+   CurrentValue = false,
+   Callback = function(Value)
+   	_G.AutoConvert = Value
+   	AutoConvert()
+   end,
+})
+
+local Toggle = Menu:CreateToggle({
+   Name = "Auto Research",
+   CurrentValue = false,
+   Callback = function(Value)
+   	_G.AutoUpLab = Value
+   	AutoUpLab()
+   end,
+})
+
+-- AutoClick Leveling Center
+local Toggle = Menu:CreateToggle({
+    Name = "AutoClick Leveling Center",
+    CurrentValue = false,
+    Callback = function(Value)
+        autoclicking = Value 
+
+        if autoclicking then
+            print("Autoclicker started!")
+            AutoClickThread = task.spawn(function()
+                while autoclicking do
+                    AutoClickLevel()
+                    task.wait(0) -- delay thingy
+                end
+            end)
+        else
+            print("Autoclicker stopped!")
+            autoclicking = false
+            if AutoClickThread then
+                task.cancel(AutoClickThread)
+                AutoClickThread = nil
+            end
+        end
+    end,
+})
+
+-- Prestige
+local Prestige = Window:CreateTab("Prestige", "shield")
+local Section = Prestige:CreateSection("Upgrade")
+local Toggle = Prestige:CreateToggle({
+   Name = "Auto Buy Upgrades",
+   CurrentValue = false,
+   Callback = function(Value)
+   	_G.AutoUpPrestige = Value
+   	AutoUpPrestige()
+   end,
+})
