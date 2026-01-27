@@ -1,10 +1,10 @@
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/Moligrafi001/Hallow-Hub/main/games/Everything%20Upgrade%20Tree.lua", true))()
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
-   Name = "Hallow Hub Remake | Everything Upgrade Tree",
+   Name = "Hallow Hub | Everything Upgrade Tree",
    Icon = 17091459839,
-   LoadingTitle = "Hallow Hub Remake",
-   LoadingSubtitle = "Original By Moligrafi",
+   LoadingTitle = "Hallow Hub",
+   LoadingSubtitle = "By Moligrafi",
    Theme = "Amethyst"
 })
 
@@ -21,13 +21,21 @@ _G.AutoUpPrestige = false
 -- Funções
 local function AutoUpPrestige()
 	while _G.AutoUpPrestige == true do
-	      game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("", true)
-          end
-         end
+		for i = 2, 30 do
+			local numero = i .. "p"
+			game:GetService("ReplicatedStorage").remotes.upgrade:FireServer(numero)
+		end
+	wait(1)
+	end
+end
 
 local function AutoUpgrade()
 	while _G.AutoUpgrade == true do
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("1")
+		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("1b", true)
+		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("2b_3", true)
+		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("4b", true)
+		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("3b", true)
+		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("5b_3", true)
 		if BuySpeed == "Very Slow" then
             wait(1)
         end
@@ -81,7 +89,7 @@ end
 -- Menu
 local Menu = Window:CreateTab("Main", "home")
 local Section = Menu:CreateSection("Upgrade")
-local Toggle = Tab:CreateToggle({
+local Toggle = Menu:CreateToggle({
    Name = "Auto Buy Upgrades",
    CurrentValue = false,
    Callback = function(Value)
@@ -89,7 +97,6 @@ local Toggle = Tab:CreateToggle({
    	AutoUpgrade()
    end,
 })
-
 
 local Dropdown = Menu:CreateDropdown({
    Name = "Select the Auto Buy Speed",
