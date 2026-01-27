@@ -27,22 +27,7 @@ local function AutoUpPrestige()
 
 local function AutoUpgrade()
 	while _G.AutoUpgrade == true do
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("1", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("2", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("3", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("4", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("5", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("6", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("7", true)
-        game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("10", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("11", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("12", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("13", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("14", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("15", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("16", true)
-		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("17", true)
-        game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("18", true)
+		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("1", "2", "3", "4", "5", "6", "7", "10", "11", "12")
 		if BuySpeed == "Very Slow" then
             wait(1)
         end
@@ -96,6 +81,7 @@ end
 -- Menu
 local Menu = Window:CreateTab("Main", "home")
 local Section = Menu:CreateSection("Upgrade")
+local Label = Tab:CreateLabel("this will be useless if red baseplate is unlocked", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
 local Toggle = Menu:CreateToggle({
    Name = "Auto Buy Upgrades",
    CurrentValue = false,
