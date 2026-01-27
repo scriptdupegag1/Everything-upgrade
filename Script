@@ -81,7 +81,6 @@ end
 -- Menu
 local Menu = Window:CreateTab("Main", "home")
 local Section = Menu:CreateSection("Upgrade")
-local Label = Tab:CreateLabel("this will be useless if red baseplate is unlocked", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
 local Toggle = Menu:CreateToggle({
    Name = "Auto Buy Upgrades",
    CurrentValue = false,
