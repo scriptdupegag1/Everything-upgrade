@@ -81,7 +81,7 @@ end
 -- Menu
 local Menu = Window:CreateTab("Main", "home")
 local Section = Menu:CreateSection("Upgrade")
-local Toggle = Menu:CreateToggle({
+local Toggle = Tab:CreateToggle({
    Name = "Auto Buy Upgrades",
    CurrentValue = false,
    Callback = function(Value)
@@ -89,6 +89,7 @@ local Toggle = Menu:CreateToggle({
    	AutoUpgrade()
    end,
 })
+
 
 local Dropdown = Menu:CreateDropdown({
    Name = "Select the Auto Buy Speed",
