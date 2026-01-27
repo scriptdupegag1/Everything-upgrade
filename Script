@@ -1,10 +1,10 @@
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/Moligrafi001/Hallow-Hub/main/games/Everything%20Upgrade%20Tree.lua", true))()
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
-   Name = "Hallow Hub | Everything Upgrade Tree",
+   Name = "Hallow Hub Remake | Everything Upgrade Tree",
    Icon = 17091459839,
-   LoadingTitle = "Hallow Hub",
-   LoadingSubtitle = "By Moligrafi",
+   LoadingTitle = "Hallow Hub Remake",
+   LoadingSubtitle = "Original By Moligrafi",
    Theme = "Amethyst"
 })
 
