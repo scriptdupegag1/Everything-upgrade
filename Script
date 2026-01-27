@@ -21,13 +21,9 @@ _G.AutoUpPrestige = false
 -- Funções
 local function AutoUpPrestige()
 	while _G.AutoUpPrestige == true do
-		for i = 2, 30 do
-			local numero = i .. "p"
-			game:GetService("ReplicatedStorage").remotes.upgrade:FireServer(numero)
-		end
-	wait(1)
-	end
-end
+	      game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("", true)
+          end
+         end
 
 local function AutoUpgrade()
 	while _G.AutoUpgrade == true do
@@ -47,7 +43,10 @@ local function AutoUpgrade()
 		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("16", true)
 		game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("17", true)
         game:GetService("ReplicatedStorage").remotes.upgrade:FireServer("18", true)
-		if BuySpeed == "Slow" then
+		if BuySpeed == "Very Slow" then
+            wait(1)
+        end
+        if BuySpeed == "Slow" then
 			wait(0.5)
 		end
 		if BuySpeed == "Fast (Not Recommended)" then
@@ -108,7 +107,7 @@ local Toggle = Menu:CreateToggle({
 
 local Dropdown = Menu:CreateDropdown({
    Name = "Select the Auto Buy Speed",
-   Options = {"Slow", "Fast (Not Recommended)"},
+   Options = {"Very Slow", "Slow", "Fast (Not Recommended)"},
    CurrentOption = {"Slow"},
    MultipleOptions = false,
    Callback = function(Options)
