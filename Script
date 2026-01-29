@@ -74,14 +74,20 @@ end
 local autoclicking = false
 local AutoClickThread
 
-local function AutoClickLevel()
-    local remote = game:GetService("ReplicatedStorage"):FindFirstChild("remotes")
-        and game.ReplicatedStorage.remotes:FindFirstChild("click_xp")
+local function AutoSlamoV1()
+    local clickDetector =
+        workspace.Incremental
+        .SlamoGenV1
+        .Factory
+        .Generator
+        .Button
+        .ClickDetector
 
-    if remote then
-        remote:FireServer() 
-    else
-        warn("RemoteEvent 'click_xp' not found in ReplicatedStorage > remotes!")
+    local delayTime = 0.2
+
+    while true do
+        fireclickdetector(clickDetector)
+        task.wait(delayTime)
     end
 end
 
@@ -127,7 +133,8 @@ local Toggle = Menu:CreateToggle({
    end,
 })
 
--- AutoClick Leveling Center
+local Tab = Window:CreateTab("Autoslamos", 4483362458)
+local Section = Tab:CreateSection("auto SlamoV1")
 local Toggle = Menu:CreateToggle({
     Name = "AutoClick Leveling Center",
     CurrentValue = false,
@@ -138,7 +145,7 @@ local Toggle = Menu:CreateToggle({
             print("Autoclicker started!")
             AutoClickThread = task.spawn(function()
                 while autoclicking do
-                    AutoClickLevel()
+                    AutoSlamoV1()
                     task.wait(0) -- delay thingy
                 end
             end)
