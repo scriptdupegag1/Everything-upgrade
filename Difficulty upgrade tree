@@ -31,8 +31,22 @@ local Toggle = Tab:CreateToggle({
    Name = "Auto Press Button",
    CurrentValue = false,
    Callback = function(Value)
-   autoslamov1 = Value
-
-
-   end,
+      autoslamov1 = Value
+   if autoslamov1 then
+            print("Autoclicker started!")
+            AutoClickThread = task.spawn(function()
+                while autoclicking do
+                    AutoClickSlamoV1()
+                    task.wait(0) -- delay thingy
+                end
+            end)
+        else
+            print("Autoclicker stopped!")
+            autoclicking = false
+            if AutoClickThread then
+                task.cancel(AutoClickThread)
+                AutoClickThread = nil
+            end
+        end
+    end,
 })
